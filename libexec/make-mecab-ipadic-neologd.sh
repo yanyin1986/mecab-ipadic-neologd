@@ -97,13 +97,13 @@ if [ ! -e ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz ]; then
 	TMP_IPADIC_HASH_VAL=`openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f 2,2 | tr -d ' '`
  	echo "HASH_VAL [${TMP_IPADIC_HASH_VAL}]"
   	
-        #if [ "${TMP_IPADIC_HASH_VAL}" != "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
-        #    echo ""
-        #    echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz don't match"
-        #else
-        #    echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz matched"
-        #    break 1;
-        #fi
+        if [ "${TMP_IPADIC_HASH_VAL}" != "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
+            echo ""
+            echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz don't match"
+        else
+            echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz matched"
+            break 1;
+        fi
     done
 else
     echo "$ECHO_PREFIX Original mecab-ipadic file is already there."
